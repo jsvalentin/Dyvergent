@@ -5,6 +5,8 @@ const session = require('express-session');
 const redis = require('redis');
 const cors = require('cors');
 const { Message } = require('./models/message');
+const ejs = require('ejs');
+const app = express();
 const {
 	MONGO_USER,
 	MONGO_PASSWORD,
@@ -23,10 +25,13 @@ let redisClient = redis.createClient({
 	port: REDIS_PORT,
 });
 
-// const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+const DATABASE_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
+mongoose.connect(DATABASE_URL, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 
-const ejs = require('ejs');
-const app = express();
+// const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 //Port
 const port = process.env.PORT || 3000;
@@ -55,12 +60,6 @@ app.use(
 );
 
 //?----------------------------
-
-const DATABASE_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/dyvergent?retryWrites=true&w=majority`;
-mongoose.connect(DATABASE_URL, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
 
 app.get('/', (req, res) => {
 	// res.send('Welcome Home');
