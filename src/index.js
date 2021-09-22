@@ -2,17 +2,29 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const session = require('express-session');
+const redis = require('redis');
+const cors = require('cors');
 const { Message } = require('./models/message');
-const client = require('twilio')(
-	process.env.TWILIO_ACCOUNT_SID,
-	process.env.TWILIO_AUTH_TOKEN
-);
+const {
+	MONGO_USER,
+	MONGO_PASSWORD,
+	MONGO_IP,
+	MONGO_PORT,
+	REDIS_URL,
+	REDIS_PORT,
+	SESSION_SECRET,
+	TWILIO_ACCOUNT_SID,
+	TWILIO_AUTH_TOKEN,
+} = require('./config/config');
+
+const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const ejs = require('ejs');
 const app = express();
 
 //Port
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 //?-------Middleware---------------
 //? register view engine
@@ -21,12 +33,34 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('src/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({}));
+app.enable('trust proxy');
+app.use(
+	session({
+		store: new RedisStore({ client: redisClient }),
+		secret: SESSION_SECRET,
+		cookie: {
+			secure: false,
+			resave: false,
+			saveUninitialized: false,
+			httpOnly: true,
+			maxAge: 60000,
+		},
+	})
+);
 
 //?----------------------------
 
-mongoose.connect(process.env.DATABASE_URL, {
+const DATABASE_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/dyvergent?retryWrites=true&w=majority`;
+mongoose.connect(DATABASE_URL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+});
+
+let RedisStore = require('connect-redis')(session);
+let redisClient = redis.createClient({
+	host: REDIS_URL,
+	port: REDIS_PORT,
 });
 
 app.get('/', (req, res) => {
@@ -72,7 +106,6 @@ app.post('/contact', async (req, res) => {
 			message: 'Unable to get your request, Please try again later.',
 		});
 	}
-	// res.send('Welcome Home');
 });
 
 app.get('/services', (req, res) => {
@@ -96,7 +129,7 @@ app.get('/admin/inbox', async (req, res) => {
 });
 
 app.get('/:*', (req, res) => {
-	res.status(404).render('pages/404');
+	res.status(404).json({ status: 'failed', message: 'page not found' });
 });
 
 //Listening app
