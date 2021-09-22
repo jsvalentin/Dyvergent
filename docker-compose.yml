@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+  node-app:
+    build: .
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-db:/data/db
+    ports:
+      - '27017:27017'
+
+  redis:
+    image: redis
+    volumes:
+      - redis-cache:/data
+
+volumes:
+  mongo-db:
+  redis-cache:

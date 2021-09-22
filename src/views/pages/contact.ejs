@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../partials/head.ejs') %>
+	<body class="pt-6">
+		<%- include('../partials/nav.ejs', {active: 'contact'}) %>
+		<main class="pb-5 md:pb-[10rem] bg-gradient relative">
+			<div class="max-w-[67rem] mx-6 sm:mx-28 xl:mx-auto mt-8">
+				<!-- contact us text -->
+				<section class="mt-20" id="welcome-usa">
+					<div
+						class="
+							flex flex-col
+							space-y-10
+							lg:flex-row lg:space-y-0
+							items-center
+							justify-between
+						"
+					>
+						<div class="flex-col space-y-4 lg:w-1/2">
+							<h1 class="text-[2rem] font-bold">Contact Us</h1>
+							<p class="text-lg leading-loose">
+								<b>DYVERGENT SECURITY</b> stands above our competitors by
+								providing an open line of communication with our clientele 24/7
+								365. Please contact our 24/7 live support number ???-???-???? or
+								complete the following form to contact us via email. We
+								appreciate your interest.
+							</p>
+						</div>
+						<div class="lg:w-1/2 flex justify-end">
+							<img
+								class="w-[100%]"
+								src="https://via.placeholder.com/500x500"
+								alt=""
+							/>
+						</div>
+					</div>
+				</section>
+				<!-- floating info cards  -->
+				<div
+					class="
+						grid grid-cols-1
+						lg:grid-cols-3
+						gap-8
+						mt-5
+						lg:absolute
+						self-center
+						bottom-10
+						lg:-bottom-40
+						max-w-[67rem]
+					"
+				>
+					<div
+						class="
+							flex flex-col
+							space-y-4
+							p-6
+							items-center
+							justify-center
+							bg-white
+							border
+							w-full
+							xl:w-[20rem]
+							relative
+						"
+					>
+						<div class="bg-[#bcc2cd] p-5 rounded-full">
+							<img src="./assets/images/icon_mail.svg" alt="" />
+						</div>
+						<h1 class="text-[#5899d1] text-xl font-bold">Email Us</h1>
+						<div>
+							<a href="mailto:support@dyvergentsecurity.com"
+								>support@dyvergentsecurity.com</a
+							>
+						</div>
+					</div>
+					<div
+						class="
+							flex flex-col
+							space-y-4
+							p-6
+							lg:p-10
+							items-center
+							justify-center
+							bg-white
+							border
+							w-full
+							xl:w-[20rem]
+							relative
+						"
+					>
+						<div class="bg-[#bcc2cd] p-5 rounded-full">
+							<img src="./assets/images/icon_pin.svg" alt="" />
+						</div>
+						<h1 class="text-[#5899d1] text-xl font-bold">Find Us</h1>
+						<p class="text-center">
+							3400 Sara Ave N <br />Lehigh Acres, FL 33971
+						</p>
+					</div>
+					<div
+						class="
+							flex flex-col
+							space-y-4
+							p-6
+							items-center
+							justify-center
+							bg-white
+							border
+							w-full
+							xl:w-[20rem]
+							relative
+						"
+					>
+						<div class="bg-[#bcc2cd] p-5 rounded-full">
+							<img src="./assets/images/icon_phone.svg" alt="" />
+						</div>
+						<h1 class="text-[#5899d1] text-xl font-bold">Telephone</h1>
+						<p>?(???) ???-????<br />?(???) ???-????</p>
+					</div>
+				</div>
+			</div>
+		</main>
+		<!-- contact us form -->
+		<section class="md:pt-[13rem] bg-gray-50 py-12" id="welcome-usa">
+			<div class="max-w-[67rem] mx-6 sm:mx-28 xl:mx-auto">
+				<div
+					class="
+						flex flex-col
+						space-y-10
+						md:space-y-0 md:flex-row md:space-x-10
+						justify-center
+						items-center
+					"
+				>
+					<form action="./contact#message" method="post">
+						<div class="flex-col w-full md:w-[50rem]">
+							<h1 class="text-[2.5rem] font-medium text-center">
+								Send us a <span class="text-[#4646c4]">Message</span>
+							</h1>
+							<!-- <h1 class="text-[2.5rem] font-medium text-center">
+							<a href="mailto:support@dyvergentsecurity.com">Contact Us</a>
+						</h1> -->
+							<h1 class="text-[2.5rem] font-medium text-center" id="message">
+								<%= message %>
+							</h1>
+							<div class="mt-10">
+								<div class="flex flex-col space-y-6">
+									<div
+										class="
+											flex flex-col
+											space-y-4
+											md:space-y-0 md:flex-row md:space-x-4
+										"
+									>
+										<input
+											class="p-3 w-full border"
+											type="text"
+											name="name"
+											placeholder="Name*"
+										/>
+										<input
+											class="p-3 w-full border"
+											type="email"
+											name="email"
+											placeholder="Email Address*"
+										/>
+									</div>
+									<div
+										class="
+											flex flex-col
+											space-y-4
+											md:space-y-0 md:flex-row md:space-x-4
+										"
+									>
+										<input
+											class="p-3 w-full border"
+											type="tel"
+											name="tel"
+											placeholder="Your Contact*"
+										/>
+										<select class="p-3 w-full border" name="service">
+											<option class="text-gray-200" value="">
+												Select Services
+											</option>
+											<option value="Security Guard Services">
+												Security Guard Services
+											</option>
+											<option value="Rover / Vehicle Patrol">
+												Rover / Vehicle Patrol
+											</option>
+											<option value="Armed Security Guard">
+												Armed Security Guard
+											</option>
+											<option value="High-Rise /Hotels / Resorts">
+												High-Rise /Hotels / Resorts
+											</option>
+											<option value="Executive Protection">
+												Executive Protection
+											</option>
+										</select>
+									</div>
+									<textarea
+										class="p-2 border"
+										name="message"
+										cols="15"
+										rows="5"
+										placeholder="Message"
+									></textarea>
+									<div class="flex w-full justify-end">
+										<button
+											class="
+												p-3
+												w-[6rem]
+												text-white
+												bg-blue-600
+												hover:bg-blue-500
+											"
+										>
+											Submit
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+		<%- include('../partials/footer.ejs') %>
+	</body>
+	<script>
+		function mobileNav() {
+			var element = document.querySelector('#mobileNav');
+			element.classList.toggle('hidden');
+		}
+	</script>
+</html>

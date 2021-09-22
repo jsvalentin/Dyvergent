@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../partials/head.ejs') %>
+	<body class="pt-6">
+		<div class="space-y-4">
+			<h1 class="text-[2rem] font-bold">Message Portal</h1>
+			<ul class="pl-6">
+				<% messages.forEach(el=> { %>
+				<li>
+					Name:&nbsp; <%= el.name%> &nbsp;|&nbsp; Email:&nbsp; <%= el.email%> &nbsp;|&nbsp; Phone:&nbsp; <%= el.phone%> &nbsp;|&nbsp;
+					Service:&nbsp; <%= el.service%> &nbsp;|&nbsp; Message:&nbsp; <%= el.message%>
+				</li>
+				<% }) %>
+			</ul>
+		</div>
+	</body>
+</html>

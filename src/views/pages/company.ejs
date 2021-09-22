@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('../partials/head.ejs') %>
+	<body class="pt-6">
+		<%- include('../partials/nav.ejs', {active: 'company'}) %>
+		<section
+			class="max-w-[67rem] mx-6 sm:mx-28 xl:mx-auto mt-20"
+			id="welcome-usa"
+		>
+			<div
+				class="
+					flex flex-col
+					space-y-10
+					lg:flex-row lg:space-y-10 lg:space-x-10
+					items-center
+				"
+			>
+				<div class="flex-col space-y-4 lg:w-1/2">
+					<h1 class="text-[2rem] font-bold">Company</h1>
+					<p>
+						DYVERGENT SECURITY is a security company based in Eastern Florida.
+						We take pride in working to satisfy our customer needs and
+						expectations. We are a licensed and insured company and meet all of
+						the required regulations. We treat our customers like royalty and
+						make sure to meet the needs of all individuals and organizations
+						that seek our services. We are as professional as possible and take
+						the needs of our customers very seriously. We appreciate all
+						feedback and will use that feedback to provide the best possible
+						service we can in the future. A company can never stop improving and
+						here at Dyvergent Security, we will do everything within our power
+						to be the best security company available. Our management staff have
+						over ten years of experience in field of security and security
+						technologies. We keep up to date on the latest security technologies
+						and services available, and do so while providing very feasible
+						rates to our customers.
+					</p>
+				</div>
+				<div class="lg:w-1/2">
+					<img src="https://via.placeholder.com/500x350" alt="" />
+				</div>
+			</div>
+		</section>
+		<section class="mt-20 bg-gray-50 py-12" id="welcome-usa">
+			<div class="max-w-[67rem] mx-6 sm:mx-28 xl:mx-auto">
+				<div class="flex flex-col md:flex-row md:space-x-10 items-center">
+					<div class="space-y-4">
+						<h1 class="text-[2rem] font-bold">
+							What our Guards do Differently
+						</h1>
+						<ul class="pl-6">
+							<li class="list-disc">
+								We guard entrances and screen guests/employees
+							</li>
+							<li class="list-disc">
+								Monitor clients’ premises with video surveillance equipment
+							</li>
+							<li class="list-disc">
+								Protect clients’ assets, employees, and guests
+							</li>
+							<li class="list-disc">Deter crime with visual presence</li>
+							<li class="list-disc">
+								Organize response in the case of fire, evacuation, or other
+								emergency
+							</li>
+							<li class="list-disc">
+								Respond to customer and employee health emergencies and
+								accidents
+							</li>
+							<li class="list-disc">Eject unwanted customers or trespassers</li>
+							<li class="list-disc">
+								Liaise with police and city emergency responders
+							</li>
+						</ul>
+						<p class="pt-12">
+							DYVERGENT SECURITY implements only the strongest standards a
+							company can have by hiring only the most highly qualified and
+							skilled employees. We offer training programs for all staff no
+							matter what level of experience they may have.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<%- include('../partials/footer.ejs') %>
+	</body>
+	<script>
+		function mobileNav() {
+			var element = document.querySelector('#mobileNav');
+			element.classList.toggle('hidden');
+		}
+	</script>
+</html>

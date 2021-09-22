@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+.env
+DONT
+package-lock.json
+postcss.config.js
+README.md
+tailwind.config.js
+tailwind.css
