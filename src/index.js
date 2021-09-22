@@ -17,6 +17,12 @@ const {
 	TWILIO_AUTH_TOKEN,
 } = require('./config/config');
 
+let RedisStore = require('connect-redis')(session);
+let redisClient = redis.createClient({
+	host: REDIS_URL,
+	port: REDIS_PORT,
+});
+
 // const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 const ejs = require('ejs');
@@ -54,12 +60,6 @@ const DATABASE_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MO
 mongoose.connect(DATABASE_URL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-});
-
-let RedisStore = require('connect-redis')(session);
-let redisClient = redis.createClient({
-	host: REDIS_URL,
-	port: REDIS_PORT,
 });
 
 app.get('/', (req, res) => {
