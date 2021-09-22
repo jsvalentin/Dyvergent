@@ -7,8 +7,9 @@
 			<ul class="pl-6">
 				<% messages.forEach(el=> { %>
 				<li>
-					Name:&nbsp; <%= el.name%> &nbsp;|&nbsp; Email:&nbsp; <%= el.email%> &nbsp;|&nbsp; Phone:&nbsp; <%= el.phone%> &nbsp;|&nbsp;
-					Service:&nbsp; <%= el.service%> &nbsp;|&nbsp; Message:&nbsp; <%= el.message%>
+					Name:&nbsp; <%= el.name%> &nbsp;|&nbsp; Email:&nbsp; <%= el.email%>
+					&nbsp;|&nbsp; Phone:&nbsp; <%= el.tel%> &nbsp;|&nbsp; Service:&nbsp;
+					<%= el.service%> &nbsp;|&nbsp; Message:&nbsp; <%= el.message%>
 				</li>
 				<% }) %>
 			</ul>
