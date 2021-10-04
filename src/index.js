@@ -5,7 +5,6 @@ const session = require('express-session');
 const redis = require('redis');
 const cors = require('cors');
 const { Message } = require('./models/message');
-const ejs = require('ejs');
 const app = express();
 const {
 	MONGO_USER,
@@ -25,7 +24,7 @@ let redisClient = redis.createClient({
 	port: REDIS_PORT,
 });
 
-const DATABASE_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
+const DATABASE_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/dyvergent?authSource=admin`;
 mongoose.connect(DATABASE_URL, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
@@ -62,12 +61,10 @@ app.use(
 //?----------------------------
 
 app.get('/', (req, res) => {
-	// res.send('Welcome Home');
 	res.render('pages/index', {});
 });
 
 app.get('/contact', (req, res) => {
-	// res.send('Welcome Home');
 	res.render('pages/contact', { message: '' });
 });
 
@@ -83,7 +80,7 @@ app.post('/contact', async (req, res) => {
 		};
 		const clientMessage = await Message.create(payload);
 		console.log(clientMessage);
-		const numbersToMessage = ['+19417876513', '+12392227085'];
+		const numbersToMessage = ['+19417876513'];
 		numbersToMessage.forEach(async (number) => {
 			const sms = await client.messages
 				.create({
