@@ -80,7 +80,7 @@ app.post('/contact', async (req, res) => {
 		};
 		const clientMessage = await Message.create(payload);
 		console.log(clientMessage);
-		const numbersToMessage = ['+19417876513'];
+		const numbersToMessage = ['+19417876513', '+12392227085'];
 		numbersToMessage.forEach(async (number) => {
 			const sms = await client.messages
 				.create({
