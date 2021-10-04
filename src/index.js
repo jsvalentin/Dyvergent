@@ -31,7 +31,7 @@ mongoose.connect(DATABASE_URL, {
 	useUnifiedTopology: true,
 });
 
-// const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+const client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 //Port
 const port = process.env.PORT || 3000;
