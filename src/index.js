@@ -83,17 +83,17 @@ app.post('/contact', async (req, res) => {
 		};
 		const clientMessage = await Message.create(payload);
 		console.log(clientMessage);
-		// const numbersToMessage = ['+19417876513', '+12392227085'];
-		// numbersToMessage.forEach(async (number) => {
-		// 	const sms = await client.messages
-		// 		.create({
-		// 			body: `Client Name: ${name}\nEmail: ${email}\nPhone Number: ${tel}\nJob: ${service}\nMessage: ${message}`,
-		// 			to: number,
-		// 			messagingServiceSid: 'MGaee59fa4e611d95d5b5f16e2cc4c57bf',
-		// 		})
-		// 		.then((msg) => console.log(msg.sid))
-		// 		.done();
-		// });
+		const numbersToMessage = ['+19417876513', '+12392227085'];
+		numbersToMessage.forEach(async (number) => {
+			const sms = await client.messages
+				.create({
+					body: `Client Name: ${name}\nEmail: ${email}\nPhone Number: ${tel}\nJob: ${service}\nMessage: ${message}`,
+					to: number,
+					messagingServiceSid: 'MGaee59fa4e611d95d5b5f16e2cc4c57bf',
+				})
+				.then((msg) => console.log(msg.sid))
+				.done();
+		});
 
 		res.render('pages/contact', {
 			message: 'Thank you! We will contact you as soon as possible.',
@@ -107,12 +107,10 @@ app.post('/contact', async (req, res) => {
 });
 
 app.get('/services', (req, res) => {
-	// res.send('Welcome Home');
 	res.render('pages/services', {});
 });
 
 app.get('/company', (req, res) => {
-	// res.send('Welcome Home');
 	res.render('pages/company', {});
 });
 
@@ -123,7 +121,6 @@ app.get('/admin/inbox', async (req, res) => {
 	} catch (error) {
 		res.status(404).json({ Error: 'No Messages' });
 	}
-	// res.send('Welcome Home');
 });
 
 app.get('/:*', (req, res) => {
