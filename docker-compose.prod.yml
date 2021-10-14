@@ -23,7 +23,7 @@ services:
       - MONGO_PASSWORD=${MONGO_PASSWORD}
       - SESSION_SECRET=${SESSION_SECRET}
       - TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID}
-	    - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
+      - TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN}
     command: node src/index.js
 
   mongo:
