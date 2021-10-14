@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    container_name: nginx
     image: nginx:stable-alpine
     ports:
       - '80:80'
@@ -9,6 +10,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
 
   nodejs:
+    container_name: nodejs
     build:
       context: .
       args:
@@ -27,6 +29,7 @@ services:
     command: node src/index.js
 
   mongo:
+    container_name: mongo
     image: mongo
     volumes:
       - mongo-db:/data/db
@@ -38,6 +41,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
 
   redis:
+    container_name: redis
     image: redis
     volumes:
       - redis-cache:/data
