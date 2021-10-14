@@ -137,7 +137,10 @@
 							<!-- <h1 class="text-[2.5rem] font-medium text-center">
 							<a href="mailto:support@dyvergentsecurity.com">Contact Us</a>
 						</h1> -->
-							<h1 class="text-[2.5rem] font-medium text-center" id="message">
+							<h1
+								class="sm:text-[1rem] text-[1.5rem] font-medium text-center red"
+								id="message"
+							>
 								<%= message %>
 							</h1>
 							<div class="mt-10">
@@ -170,10 +173,13 @@
 										"
 									>
 										<input
-											class="p-3 w-full border"
+											class="p-3 w-full border tel"
+											id="tel"
 											type="tel"
 											name="tel"
-											placeholder="Your Contact*"
+											pattern="[(][0-9]{3}[)] [0-9]{3} - [0-9]{4}"
+											placeholder="(941) 589 - 8425"
+											required
 										/>
 										<select class="p-3 w-full border" name="service">
 											<option class="text-gray-200" value="">

@@ -8,3 +8,5 @@ README.md
 tailwind.config.js
 tailwind.css
 .gitignore
+docker-compose.dev.yml
+docker-compose.yml

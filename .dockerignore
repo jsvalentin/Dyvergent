@@ -6,7 +6,9 @@ Dockerfile
 .git
 .gitignore
 .env
-docker-compose*
+docker-compose.dev.yml
+docker-compose.prod.yml
+docker-compose.yml
 package-lock.json
 postcss.config.js
 README.md
