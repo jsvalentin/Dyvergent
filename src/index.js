@@ -83,8 +83,9 @@ app.get('/verify/:code', async (req, res) => {
 				console.log('Deleted');
 			});
 
-			res.render('pages/contact', {
-				message: `Thank you, One of our team members will be contacting you shortly.`,
+			res.render('pages/verify', {
+				title: 'Thank You!',
+				message: `One of our team members will be contacting you shortly.`,
 			});
 		} catch (error) {
 			res.render('pages/contact', {
@@ -166,7 +167,8 @@ app.post('/contact', async (req, res) => {
 				.then((msg) => console.log(msg.sid))
 				.done();
 		});
-		res.render('pages/contact', {
+		res.render('pages/verify', {
+			title: 'One more step left!',
 			message: `In order to proceed on submitting the contact form, 
 				We need to check that your not a robot!  
 				Please open the confirmation link that was sent to your phone number.`,
