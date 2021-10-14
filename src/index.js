@@ -65,9 +65,8 @@ app.get('/verify/:code', async (req, res) => {
 		try {
 			const clientMessage = await Message.create(JSON.parse(data));
 			console.log(clientMessage);
-			// const numbersToMessage = [`+1${tel}`];
-			const numbersToMessage = ['+19417876513'];
-			// const numbersToMessage = ['+19417876513', '+12392227085'];
+			// const numbersToMessage = ['+19417876513'];
+			const numbersToMessage = ['+19417876513', '+12392227085'];
 			numbersToMessage.forEach(async (number) => {
 				const sms = await client.messages
 					.create({
